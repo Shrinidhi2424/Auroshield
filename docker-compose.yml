@@ -2,9 +2,8 @@ version: "3.9"
 services:
   backend:
     build:
-      context: ./infra/docker
-      dockerfile: backend.Dockerfile
-    container_name: backend
+      context: .
+      dockerfile: ./infra/docker/backend.Dockerfile
     ports:
       - "8080:8080"
     depends_on:
@@ -12,19 +11,20 @@ services:
 
   ai-service:
     build:
-      context: ./infra/docker
-      dockerfile: ai-service.Dockerfile
-    container_name: ai-service
+      context: .
+      dockerfile: ./infra/docker/ai-service.Dockerfile
     ports:
       - "8000:8000"
 
   frontend:
     build:
-      context: ./infra/docker
-      dockerfile: frontend.Dockerfile
-    container_name: frontend
+      context: .
+      dockerfile: ./infra/docker/frontend.Dockerfile
     ports:
-      - "19006:19006"  # Expo Dev server
+      - "19006:19006"
+    stdin_open: true
+    tty: true
+
 
   db:
     image: postgis/postgis:14-3.3
