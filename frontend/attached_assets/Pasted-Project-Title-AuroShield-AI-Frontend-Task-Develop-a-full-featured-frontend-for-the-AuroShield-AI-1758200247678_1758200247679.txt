@@ -1,0 +1,163 @@
+Project Title: AuroShield AI – Frontend
+Task: Develop a full-featured frontend for the AuroShield AI platform using React Native (for mobile) and optionally React.js (for web) that interacts with backend and AI services via API endpoints. No backend logic should be implemented, except Firebase-based authentication. Leave placeholders for all database connections.
+
+Requirements:
+1. Authentication
+
+Implement Firebase Authentication:
+
+Email & Password login and signup
+
+Google Sign-In / Social login options (optional)
+
+Password reset functionality
+
+Ensure proper auth flow: Protected routes/screens for logged-in users, public screens for guest access.
+
+2. User Interface Components
+
+Home Screen / Dashboard
+
+Real-time danger heatmap view (static map placeholder initially, integrate Mapbox or Google Maps API)
+
+Live rerouting suggestions (mocked, can call API endpoints later)
+
+Buttons for:
+
+Report Incident (voice/text)
+
+Panic Button
+
+View Alerts
+
+Report Incident Screen
+
+Form with:
+
+Text input for description
+
+Voice note upload/record (local storage placeholder)
+
+Photo upload (optional)
+
+Geo-location picker (current location prefilled)
+
+Submit button calls placeholder API endpoint to send report
+
+Panic Button Screen
+
+Single-action panic button
+
+Call API endpoint to notify nearby volunteers, emergency contacts, and authorities
+
+Volunteer Dashboard Screen
+
+List of active reports assigned to the volunteer
+
+Status update option (mark as resolved / in-progress)
+
+Anonymous Reporting
+
+Optional toggle in report form
+
+No user info sent if enabled
+
+Profile Screen
+
+User details from Firebase Auth
+
+Logout button
+
+3. Integration Placeholders
+
+Create a config file or .env file for backend and AI endpoints:
+
+API_BASE_URL – placeholder for backend REST APIs
+
+AI_SERVICE_URL – placeholder for NLP & spatial analysis service
+
+The frontend should be coded to call these endpoints, but responses can be mocked for now.
+
+Include README instructions on where and how to replace these placeholders with real endpoints.
+
+4. Routing & Navigation
+
+Use React Navigation (for React Native) or React Router (for web)
+
+Screens:
+
+Login / Signup
+
+Dashboard
+
+Report Incident
+
+Panic Button
+
+Alerts
+
+Volunteer Dashboard
+
+Profile / Settings
+
+5. State Management
+
+Use Redux or Context API for global state management
+
+Manage:
+
+Auth state
+
+Reports (mocked)
+
+User profile
+
+6. UI/UX
+
+Clean, mobile-first responsive design
+
+Map integration with markers for reports
+
+Notifications (local push notifications) for alerts (optional placeholder)
+
+Include loading states and error handling for API calls
+
+7. Project Structure
+
+components/ – Reusable UI components (buttons, cards, forms)
+
+screens/ – All app screens
+
+services/ – API service calls (placeholders)
+
+navigation/ – Navigation setup
+
+redux/ or context/ – State management
+
+assets/ – Images, icons, and fonts
+
+8. README Instructions
+
+Include instructions to:
+
+Set up Firebase Authentication
+
+Replace backend API placeholders (API_BASE_URL) with real endpoints
+
+Replace AI service URL placeholders (AI_SERVICE_URL) with real endpoints
+
+Run the frontend locally or on device/emulator
+
+Optional: Instructions for adding Mapbox/Google Maps keys
+
+✅ Important Notes (must follow strictly)
+
+Do NOT implement any backend logic. Only call endpoints via fetch/axios.
+
+Do NOT create or connect to any database. Leave placeholders for later integration.
+
+Firebase Auth only is allowed.
+
+Mock API responses for frontend components where necessary.
+
+Focus on UI, navigation, state management, and Firebase Auth.
