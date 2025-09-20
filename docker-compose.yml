@@ -1,34 +1,9 @@
 version: "3.9"
 services:
-  backend:
-    build:
-      context: .
-      dockerfile: ./infra/docker/backend.Dockerfile
-    ports:
-      - "8080:8080"
-    depends_on:
-      - db
-
-  ai-service:
-    build:
-      context: .
-      dockerfile: ./infra/docker/ai-service.Dockerfile
-    ports:
-      - "8000:8000"
-
-  frontend:
-    build:
-      context: .
-      dockerfile: ./infra/docker/frontend.Dockerfile
-    ports:
-      - "19006:19006"
-    stdin_open: true
-    tty: true
-
-
   db:
     image: postgis/postgis:14-3.3
     container_name: postgres
+    restart: always
     environment:
       POSTGRES_USER: auro_user
       POSTGRES_PASSWORD: auro_pass
@@ -37,3 +12,30 @@ services:
       - "5432:5432"
     volumes:
       - ./database/migrations:/docker-entrypoint-initdb.d
+      - db_data:/var/lib/postgresql/data
+
+  backend:
+    build:
+      context: .
+      dockerfile: ./infra/docker/backend.Dockerfile
+    container_name: backend
+    depends_on:
+      - db
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://db:5432/auroshield
+      SPRING_DATASOURCE_USERNAME: auro_user
+      SPRING_DATASOURCE_PASSWORD: auro_pass
+    ports:
+      - "8080:8080"
+
+  ai-service:
+    build:
+      context: .
+      dockerfile: ./infra/docker/ai-service.Dockerfile
+    container_name: ai-service
+    ports:
+      - "8000:8000"
+    restart: always
+
+volumes:
+  db_data:
